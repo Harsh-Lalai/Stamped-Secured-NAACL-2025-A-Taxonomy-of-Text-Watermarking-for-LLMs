@@ -270,7 +270,7 @@ We welcome contributions to expand and improve this taxonomy! If you find papers
 ### **How to Add Missing Papers**
 
 #### **Option 1: Open an Issue**
-1. Go to the [Issues](https://github.com/[your-username]/[repo-name]/issues) tab
+1. Go to the [Issues](https://github.com/[Harsh-Lalai]/[Stamped-Secured-NAACL-2025-A-Taxonomy-of-Text-Watermarking-for-LLMs]/issues) tab
 2. Click "New Issue"
 3. Use the template: **"Add Missing Paper: [Paper Title]"**
 4. Include the following information:
