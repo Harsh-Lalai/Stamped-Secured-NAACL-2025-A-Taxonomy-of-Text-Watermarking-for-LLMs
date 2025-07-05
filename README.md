@@ -1,8 +1,72 @@
 ## Respository for the paper: From Intentions to Techniques: A Comprehensive Taxonomy and Challenges in Text Watermarking for Large Language Models ##
 
-A curated taxonomy and collection of papers on text watermarking for Large Language Models (LLMs), grouped by intentions, methods, and evaluation datasets as described in [our paper](https://aclanthology.org/anthology-files/pdf/naacl/2025.naacl-findings.343.pdf).  
+We present a curated taxonomy and collection of papers on text watermarking for Large Language Models (LLMs), grouped by intentions, methods, and evaluation datasets as described in [our paper](https://aclanthology.org/anthology-files/pdf/naacl/2025.naacl-findings.343.pdf).  
 
----
+## Taxonomy
+
+This taxonomy covers works on text watermarking for LLMs, systematically organized to help researchers:
+- Navigate the field efficiently
+- Identify research gaps
+- Compare techniques across multiple dimensions
+- Understand emerging trends
+
+## For New Researchers
+
+Getting started in text watermarking research can be overwhelming due to the diverse approaches and scattered literature. Our taxonomy is specifically designed to help you:
+
+### **Quick Navigation Guide**
+- **Start with [Intention](#1-intention)**: Understand what problems watermarking solves
+- **Explore [Watermark Addition](#2-watermark-addition)**: See how different techniques work
+- **Check [Evaluation Dataset](#3-evaluation-dataset)**: Find relevant benchmarks for your work
+- **Review [Adversarial Attacks](#4-adversarial-attacks)**: Understand robustness challenges
+
+### **Research Entry Points**
+Based on your background and interests:
+
+**For NLP Researchers:**
+- Focus on **Text Quality** and **Semantic Relatedness** approaches
+- Start with rule-based substitution methods
+- Use established NLP datasets (C4, WikiText-2, CNN/Daily Mail)
+
+**For Security Researchers:**
+- Explore **Model Ownership Verification** techniques
+- Study embedding-level addition methods
+- Investigate adversarial attack strategies
+
+**For ML/Systems Researchers:**
+- Examine **Similar Output Distribution** approaches
+- Focus on output logits modification techniques
+- Work on evaluation benchmark standardization
+
+### **Finding Your Research Gap**
+Our [Open Challenges](#open-challenges) section identifies six critical areas where new research is needed:
+
+1. **Resilience to Adversarial Attacks** - Most urgent need
+2. **Standardization of Evaluation Benchmarks** - Infrastructure gap
+3. **Impact on LLM Output Factuality** - Understudied area
+4. **Compatibility with NLP Downstream Tasks** - Practical applications
+5. **Enhanced Interpretability** - Transparency needs
+6. **Human-Centered Watermarking** - User experience focus
+
+### **Getting Started Checklist**
+**Read the taxonomy table** to understand current approaches  
+**Identify your research interest** from the four dimensions  
+**Choose relevant papers** from our curated collection  
+**Pick an open challenge** to address  
+**Use our citation** when building on this work  
+
+### **Recommended First Papers**
+For beginners, we recommend starting with these foundational works:
+
+- **Kirchenbauer et al. (ICML 2023)**: "Watermark for Large Language Models" - Classic green-red list approach
+- **Zhao et al. (ICML 2023)**: "Protecting Language Generation Models via Invisible Watermarking" - Embedding-level techniques
+- **Yoo et al. (ACL 2023)**: "Robust Multi-bit Natural Language Watermarking" - Multi-bit approaches
+
+### **Join the Community**
+- **Contact the authors** for collaboration opportunities
+- **Add new papers** through pull requests
+- **Suggest new challenges** or taxonomy improvements
+- **Share your research** that builds on this taxonomy
 
 ## Abstract
 
@@ -35,7 +99,7 @@ Watermarking methods are primarily designed around three user-driven intentions:
 
 - **Similar Output Distribution**  
   These approaches aim for watermarked text to match the statistical word/token distribution of non-watermarked outputs, making watermarking harder to detect and evade.  
-  Stealthy watermarks adjust output probabilities or apply symmetric permutations to maintain the “naturalness” of text, balancing undetectability with robustness.
+  Stealthy watermarks adjust output probabilities or apply symmetric permutations to maintain the "naturalness" of text, balancing undetectability with robustness.
 
 - **Model Ownership Verification**  
   Techniques in this bucket embed identifiers or triggers that can later be used to prove model or dataset ownership—even if the adversary tries to replicate or extract the LLM.  
@@ -51,7 +115,7 @@ Watermark embedding techniques generally fall into three categories (with overla
 
 - **Embedding-Level Addition**  
   Watermarks are embedded by altering model internals—either during training (latent space/representation tweaks), through output logits modification (adjusting token probabilities to bias toward a green list, for example), or by message/signal injection in hidden spaces.  
-  Some methods encode multi-bit messages, cryptographic signatures, or user/context information within the model’s output distribution, often in a way that’s hard to reverse without privileged knowledge.
+  Some methods encode multi-bit messages, cryptographic signatures, or user/context information within the model's output distribution, often in a way that's hard to reverse without privileged knowledge.
 
 - **Ad-Hoc Addition**  
   Task-specific or hybrid approaches, such as modifying whitespace with Unicode, inserting visual/textual variations, or code-specific tricks (variable renaming, AST rewrites).  
@@ -74,7 +138,7 @@ A wide variety of datasets are used to evaluate watermarking performance, reflec
   *Example datasets:* WMT14, HC3, CNN/Daily Mail, IMDb, AgNews, literary corpora.
 
 - **Other Downstream Tasks**  
-  For these tasks, given the same initial prompt $X$, the LLM’s generated response $Y$ (before watermarking) is compared with the response $Y'$ (after watermarking).  
+  For these tasks, given the same initial prompt $X$, the LLM's generated response $Y$ (before watermarking) is compared with the response $Y'$ (after watermarking).  
   *Example datasets:*  
   - Summarization: CNN/Daily Mail, XSUM, DART, WebNLG  
   - Machine translation: WMT14, IWSLT14  
@@ -119,7 +183,7 @@ These attacks highlight the need for resilience in watermark design and for robu
 | [CodeMark: Imperceptible Watermarking for Code Datasets against Neural Code Completion Models](https://arxiv.org/pdf/2308.14401) | Zhensu Sun, Xiaoning Du, Fu Song and Li Li | ESEC/FSE | - | Semantic Relatedness (Text Quality) | Ad Hoc | CSN |
 | [A Resilient and Accessible Distribution-Preserving Watermark for Large Language Models](https://arxiv.org/pdf/2310.07710) | Yihan Wu, Zhengmian Hu, Junfeng Guo, Hongyang Zhang and Heng Huang | ICML | [GitHub](https://github.com/yihwu/DiPmark) | Similar Output Distribution | Output Logits Modification (Embedding level addition) | OpenGen, LFQA |
 | [An Unforgeable Publicly Verifiable Watermark for Large Language Models](https://openreview.net/pdf?id=gMLQwKDY3N) | Aiwei Liu, Leyi Pan, Xuming Hu, Shu'ang Li, Lijie Wen, Irwin King and Philip S. Yu | ICLR | [GitHub](https://github.com/THU-BPM/unforgeable_watermark) | Model Ownership Verification | Output Logits Modification (Embedding level addition) | C4, Dbpedia Class |
-| [Electronic marking and identification techniques to discourage document copying.](https://ieeexplore.ieee.org/document/464718) | J. Brassil, S. Low, N. Maxemchuk and L. O’Gorman | IEEE | - | Model Ownership Verification | Ad Hoc | - |
+| [Electronic marking and identification techniques to discourage document copying.](https://ieeexplore.ieee.org/document/464718) | J. Brassil, S. Low, N. Maxemchuk and L. O'Gorman | IEEE | - | Model Ownership Verification | Ad Hoc | - |
 | [UniSpaCh: A text-based data hiding method using Unicode space characters](https://dl.acm.org/doi/10.1016/j.jss.2011.12.023) | Lip Yee Por, KokSheik Wong and Kok Onn Chee | JSSO | - | Model Ownership Verification and Minimizing impact on Perplexity (Text Quality) | Ad Hoc | - |
 | [Embarrassingly Simple Text Watermarks](https://arxiv.org/pdf/2310.08920) | Ryoma Sato, Yuki Takezawa, Han Bao, Kenta Niwa and Makoto Yamada | Preprint | [GitHub](https://github.com/amicus-veritatis/easydemark) | Minimizing impact on Perplexity (Text Quality) and  Model Ownership Verification | Ad Hoc | WMT14, C4, WMT16 |
 | [The Hiding Virtues of Ambiguity: Quantifiably Resilient Watermarking of Natural Language Text through Synonym Substitutions](https://dl.acm.org/doi/10.1145/1161366.1161397) | Umut Topkara, Mercan Topkara and Mikhail J. Atallah | MM&Sec | - | Semantic Relatedness (Text Quality) | Lexical (Rule-based substitution) | Wordnet |
@@ -160,7 +224,7 @@ Despite recent progress, text watermarking for LLMs faces a number of fundamenta
   There is insufficient research on how watermarking—especially robust methods—affects the factual accuracy, truthfulness, or downstream utility of LLM outputs. Some robust watermarking may inadvertently increase hallucination or degrade answer quality.
 
 - **Interpretability and Transparency:**  
-  Users and practitioners often lack clear tools or standards to interpret or audit the presence and effect of watermarks. Inspired by the privacy/security field, there is a need for “model cards” or similar transparency artifacts to communicate watermarking properties.
+  Users and practitioners often lack clear tools or standards to interpret or audit the presence and effect of watermarks. Inspired by the privacy/security field, there is a need for "model cards" or similar transparency artifacts to communicate watermarking properties.
 
 - **Human-Centered Design:**  
   Watermarking must not negatively impact user experience or trust. Understanding human perception, user acceptance, and the broader societal impacts of watermarked content is crucial as adoption increases.
@@ -199,3 +263,45 @@ If you use this taxonomy table, please cite:
     abstract = "With the rapid growth of Large Language Models (LLMs), safeguarding textual content against unauthorized use is crucial. Watermarking offers a vital solution, protecting both - LLM-generated and plain text sources. This paper presents a unified overview of different perspectives behind designing watermarking techniques through a comprehensive survey of the research literature. Our work has two key advantages: (1) We analyze research based on the specific intentions behind different watermarking techniques, evaluation datasets used, and watermarking addition and removal methods to construct a cohesive taxonomy. (2) We highlight the gaps and open challenges in text watermarking to promote research protecting text authorship. This extensive coverage and detailed analysis sets our work apart, outlining the evolving landscape of text watermarking in Language Models."
 }
 ```
+
+## **Contribute!**
+We welcome contributions to expand and improve this taxonomy! If you find papers that should be included, please help us maintain this comprehensive resource.
+
+### **How to Add Missing Papers**
+
+#### **Option 1: Open an Issue**
+1. Go to the [Issues](https://github.com/[your-username]/[repo-name]/issues) tab
+2. Click "New Issue"
+3. Use the template: **"Add Missing Paper: [Paper Title]"**
+4. Include the following information:
+
+```markdown
+**Paper Title:** [Full title]
+**Authors:** [Author list]
+**Conference/Journal:** [Venue and year]
+**ArXiv/PDF Link:** [Direct link]
+**Code Repository:** [GitHub link if available]
+
+**Proposed Classification:**
+- **Intention:** [Text Quality / Similar Output Distribution / Model Ownership Verification]
+- **Watermark Addition:** [Rule-based / Embedding-level / Ad-hoc]
+- **Evaluation Dataset:** [List of datasets used]
+
+**Brief Description:** [2-3 sentences about the paper's contribution]
+
+**Why it should be included:** [Explain how it fits into our taxonomy]
+```
+
+#### **Option 2: Submit a Pull Request**
+1. Fork this repository
+2. Add the paper to the taxonomy table in `README.md`
+3. Follow the existing table format
+4. Submit a pull request with a clear description
+
+### **Paper Inclusion Criteria**
+
+We include papers that:
+- Focus on **text watermarking for language models**
+- Present **novel watermarking techniques or evaluations**
+- Are **peer-reviewed** (conferences, journals) or **high-quality preprints**
+- Contribute to the **research landscape**
